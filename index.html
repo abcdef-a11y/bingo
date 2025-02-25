@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ziltener Bingo</title>
+</head>
+<body>
+    <script>
+        let words = ['können sie nachlesen',
+    'überprüfen sie das',
+    'ähm',
+    'was ich noch erzählen möchte',
+    'wissen sie das? ich weiss es nicht',
+    'fragen sie',
+    '"tafel putzen"',
+    '"kreide bricht"',
+    'weil es funktioniert',
+    'analog(es)',
+    'abstakt(ion)',
+    '"auf Übung verweisen"',
+    'es gibt einen Satz/Korolar',
+    'nach der pause besprechen wir das',
+    'überlegen sie das',
+    'a priori',
+    'jetzt machen wirs konkreter',
+    'vorher möchte ich noch eine Bemerkung machen',
+    'machen wir ein bsp dazu',
+    '"verweis auf skript von struwe"',
+    'weil das sehr wichtig ist für sie',
+    '"schaut seine Notizen an und sagt Ja"',
+    '"können sie ein bischen nachdenken"',
+    'Laura beantwortet eine Frage',
+    'Rote Puli wird ignoriert'];
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        shuffle(words);
+        const params = new URLSearchParams({
+            img: 1,
+            title: 'Ziltener Bingo',
+            words: words.join('\r\n'),
+            theme: 'ink-saver',
+            size: 0,
+            'per-page': 2,
+            'free-space-text': 'FREE+SPACE',
+            'not-random': 1,
+            s: 1
+        });
+
+        const url = `https://myfreebingocards.com/bingo-card-generator/results?${params.toString()}`;
+        const img = document.createElement('img');
+        img.src = url;
+        img.alt = 'Ziltener Bingo';
+        img.style.height = '100%';
+        document.body.appendChild(img);
+    </script>
+</body>
+</html>
